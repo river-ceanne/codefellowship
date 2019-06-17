@@ -18,7 +18,8 @@ public class AppUserController {
 
     @PostMapping("/users")
     public RedirectView createUser(String username, String password){
-        AppUser newUser = new AppUser(username,bCryptPasswordEncoder.encode(password));
+        String hashedpwd = bCryptPasswordEncoder.encode(password);
+        AppUser newUser = new AppUser(username,hashedpwd);
         appUserRepository.save(newUser);
         return new RedirectView("/");
     }

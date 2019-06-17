@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface AppUserRepository extends CrudRepository<AppUser, Long> {
 
-    AppUser findByUsername();
+    public List<AppUser> findByUsername(String username);
 
 }

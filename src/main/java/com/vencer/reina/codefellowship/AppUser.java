@@ -3,10 +3,7 @@ package com.vencer.reina.codefellowship;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class AppUser {
@@ -25,7 +22,11 @@ public class AppUser {
         this.username = username;
     }
 
+    public String getUsername() {
+        return username;
+    }
 
-
-
+    public String getPassword() {
+        return password;
+    }
 }
