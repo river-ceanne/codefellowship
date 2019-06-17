@@ -11,9 +11,6 @@ import javax.persistence.Id;
 @Entity
 public class AppUser {
 
-    @Autowired
-    static BCryptPasswordEncoder bCryptPasswordEncoder;
-
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     long id;
 
