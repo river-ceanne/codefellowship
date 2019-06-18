@@ -7,6 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Date;
 
 @Entity
 public class AppUser implements UserDetails {
@@ -16,13 +17,21 @@ public class AppUser implements UserDetails {
 
     String username;
     String password;
+    Date dob;
+    String firstname;
+    String lastname;
+    String bio;
+
 
     public AppUser(){}
 
-    public AppUser(String username,String password){
-
+    public AppUser(String username,String password, Date dob, String firstname, String lastname, String bio){
         this.password = password;
         this.username = username;
+        this.dob = dob;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.bio = bio;
     }
 
     public String getUsername() {
@@ -56,5 +65,21 @@ public class AppUser implements UserDetails {
 
     public String getPassword() {
         return this.password;
+    }
+
+    public Date getDob() {
+        return dob;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
     }
 }
