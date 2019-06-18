@@ -57,26 +57,26 @@ public class AppUserController {
         return "myprofile";
     }
 
-    @PostMapping("/login")
-    public RedirectView loginSuccessGoToMyProfile(Model m, String username, String password) throws ParseException {
-        String hashedpwd = bCryptPasswordEncoder.encode(password);
-        AppUser user = appUserRepository.findByUsername(username);
-
-        if(user != null){
-
-//            if(user.getPassword() == hashedpwd){
-//                Authentication authentication = new UsernamePasswordAuthenticationToken(user, user.getPassword(), user.getAuthorities());
-//            Authentication authentication = authenticationManager.authenticate();
-            Authentication authentication = new UsernamePasswordAuthenticationToken(new AppUser(username,password), null, new ArrayList<>());
-                SecurityContextHolder.getContext().setAuthentication(authentication);
-                m.addAttribute("appUser",user);
-                return new RedirectView("/myprofile");
-//            }
-
-        }
-
-        return new RedirectView("/login");//refresh page - go back to login back if not right auth
-    }
+//    @PostMapping("/login")
+//    public RedirectView loginSuccessGoToMyProfile(Model m, String username, String password) throws ParseException {
+//        String hashedpwd = bCryptPasswordEncoder.encode(password);
+//        AppUser user = appUserRepository.findByUsername(username);
+//
+//        if(user != null){
+//
+////            if(user.getPassword() == hashedpwd){
+////                Authentication authentication = new UsernamePasswordAuthenticationToken(user, user.getPassword(), user.getAuthorities());
+////            Authentication authentication = authenticationManager.authenticate();
+//            Authentication authentication = new UsernamePasswordAuthenticationToken(new AppUser(username,password), null, new ArrayList<>());
+//                SecurityContextHolder.getContext().setAuthentication(authentication);
+//                m.addAttribute("appUser",user);
+//                return new RedirectView("/myprofile");
+////            }
+//
+//        }
+//
+//        return new RedirectView("/login");//refresh page - go back to login back if not right auth
+//    }
 
     @GetMapping("/users/{id}")
     public String getSingleAppUserPage(Model m, @PathVariable String id) {
