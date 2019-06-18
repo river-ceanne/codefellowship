@@ -11,11 +11,6 @@ import java.security.Principal;
 @Controller
 public class CodefellowshipController {
 
-    @GetMapping("/codefellowship")
-    public String getCodefellowship2(){
-        return "codefellowship";
-    }
-
     @GetMapping("/")
     public String getCodefellowship(Principal p, Model m) {
         if(p != null){

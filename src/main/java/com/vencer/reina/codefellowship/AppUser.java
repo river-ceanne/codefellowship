@@ -34,6 +34,12 @@ public class AppUser implements UserDetails {
         this.bio = bio;
     }
 
+    public AppUser(String username, String password){
+        this.password = password;
+        this.username = username;
+    }
+
+
     public String getUsername() {
         return this.username;
     }
