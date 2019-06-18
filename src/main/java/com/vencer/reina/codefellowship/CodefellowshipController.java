@@ -8,9 +8,15 @@ import org.springframework.web.bind.annotation.RestController;
 @Controller
 public class CodefellowshipController {
 
-    @GetMapping("/codefellowship")
+    @GetMapping("/")
     public String getCodefellowship(){
         return "codefellowship";
     }
+
+    @GetMapping("/codefellowship")
+    public String getCodefellowship2(){
+        return "codefellowship";
+    }
+
 
 }
