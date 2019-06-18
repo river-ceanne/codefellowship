@@ -38,4 +38,17 @@ public class AppUserController {
         return "login";
     }
 
+    @GetMapping("/signup")
+    public String getSignUpPage() {
+        return "signup";
+    }
+
+    @GetMapping("/users/{id}")
+    public String getSingleAppUserPage() {
+        return "singleappuser";
+    }
+
+
+
+
 }
