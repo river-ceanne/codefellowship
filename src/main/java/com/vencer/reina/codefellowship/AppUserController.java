@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.security.Principal;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -53,30 +54,12 @@ public class AppUserController {
     }
 
     @GetMapping("/myprofile")
-    public String getMyProfilePage() {
+    public String getMyProfilePage(Principal p, Model m) {
+        AppUser appUser = appUserRepository.findByUsername(p.getName());
+        m.addAttribute("appUser",appUser);
         return "myprofile";
     }
 
-//    @PostMapping("/login")
-//    public RedirectView loginSuccessGoToMyProfile(Model m, String username, String password) throws ParseException {
-//        String hashedpwd = bCryptPasswordEncoder.encode(password);
-//        AppUser user = appUserRepository.findByUsername(username);
-//
-//        if(user != null){
-//
-////            if(user.getPassword() == hashedpwd){
-////                Authentication authentication = new UsernamePasswordAuthenticationToken(user, user.getPassword(), user.getAuthorities());
-////            Authentication authentication = authenticationManager.authenticate();
-//            Authentication authentication = new UsernamePasswordAuthenticationToken(new AppUser(username,password), null, new ArrayList<>());
-//                SecurityContextHolder.getContext().setAuthentication(authentication);
-//                m.addAttribute("appUser",user);
-//                return new RedirectView("/myprofile");
-////            }
-//
-//        }
-//
-//        return new RedirectView("/login");//refresh page - go back to login back if not right auth
-//    }
 
     @GetMapping("/users/{id}")
     public String getSingleAppUserPage(Model m, @PathVariable String id) {
