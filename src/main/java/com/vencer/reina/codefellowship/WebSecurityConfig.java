@@ -1,5 +1,6 @@
 package com.vencer.reina.codefellowship;
 
+import com.vencer.reina.codefellowship.UserDetailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Autowired
     private UserDetailServiceImpl userDetailsService;
 
@@ -40,7 +42,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login").successForwardUrl("/myprofile")
+                .loginPage("/login").successForwardUrl("/myprofile").permitAll()
                 .and()
                 .logout()
                 .logoutSuccessUrl("/login")

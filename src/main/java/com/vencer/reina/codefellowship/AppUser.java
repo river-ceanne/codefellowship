@@ -12,7 +12,8 @@ import java.util.Date;
 @Entity
 public class AppUser implements UserDetails {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     long id;
 
     String username;
