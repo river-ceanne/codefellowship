@@ -1,0 +1,29 @@
+
+body {
+
+text-align: center;
+background-color: aliceblue;
+
+}
+
+nav a {
+
+padding-right: 3vw;
+text-decoration: none;
+
+&:hover{
+background-color: white;
+}
+
+}
+
+nav {
+
+background-color: lightpink;
+
+}
+
+ul{
+
+list-style-type: none;
+}

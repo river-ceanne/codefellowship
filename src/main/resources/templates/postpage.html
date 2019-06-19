@@ -1,19 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www,thymeleaf.org">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Add a Post</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="/styles.css" rel="stylesheet" />
 </head>
 <body>
 
-<div th:replace="fragments/header :: header">...</div>
+<form method="POST" action="/posts" >
 
-<form method="POST" action="/login">
-    <p><label for="username">Username:</label><input name="username" id="username"/></p>
-    <p><label for="password">Password:</label><input type="password" name="password" id="password" /></p>
+    <p><label for="body">Create a post</label>
+        <textarea name="body" id="body" rows="10" cols="600"></textarea></p>
 
     <input type="submit" />
 </form>

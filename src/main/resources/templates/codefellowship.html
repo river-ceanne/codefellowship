@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www,thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Codefellowship</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="/styles.css" rel="stylesheet" />
 </head>
 <body>
 
-<h1>Codefellowship</h1>
+<div th:replace="fragments/header :: header">...</div>
 
-<h2>Welcome, <span th:text="${principal}"></span>!</h2>
-
-<a th:href="@{'/login'}">Log In</a>
-
-<a th:href="@{'/logout'}">Logout</a>
 
 <p>CodeFellowship allows people learning to code to connect with each other and support each other on their coding journeys.
 

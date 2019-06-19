@@ -16,11 +16,15 @@ This repository includes some basic implementation of Spring Authorization on a 
 - CodefellowshipController
 - UserDetailServiceImpl
 - WebSecurityConfig
+- Post
+- PostController
 
 ## Interfaces
 - AppUserRepository
+- PostRepository
 
 ## Routes/API
+
 - @GetMapping("/")
       
       public String getCodefellowship(Principal p, Model m)
@@ -44,3 +48,11 @@ This repository includes some basic implementation of Spring Authorization on a 
 - @GetMapping("/users/{id}")
       
       public String getSingleAppUserPage(Model m, @PathVariable String id) 
+      
+- @PostMapping("/posts")
+     
+      public RedirectView createPost(Principal p, Model m, String body)
+      
+- @GetMapping("/post")
+      
+      public String getPostPage() 
