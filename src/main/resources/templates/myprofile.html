@@ -6,21 +6,25 @@
 </head>
 <body>
 
+<div th:replace="fragments/header :: header">...</div>
+
 <h1>My Profile</h1>
 
 <h2>Hello, <span th:text="${appUser.firstname}"></span></h2>
 
 
 <h1>Username: <span th:text="${appUser.username}"></span></h1>
+<!--        <img th:src="@{${add an image url here}}" th:width="300"/>-->
 
 <p>First Name: <span th:text="${appUser.firstname}"></span></p>
 <p>Last Name: <span th:text="${appUser.lastname}"></span></p>
 <p>Date of Birth: <span th:text="${appUser.dob}"></span></p>
 <p>Bio: <span th:text="${appUser.bio}"></span></p>
 
+<div th:replace="fragments/post :: post">...</div>
+
 <ul>
     <li th:each="post : ${appUser.posts}">
-<!--        <img th:src="@{${album.imageUrl}}" th:width="300"/>-->
         <p><span th:text="${post.createdAt}"></span></p>
         <p><span th:text="${post.body}"></span></p>
     </li>

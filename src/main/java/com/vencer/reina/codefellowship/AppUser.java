@@ -23,6 +23,7 @@ public class AppUser implements UserDetails {
     String firstname;
     String lastname;
     String bio;
+
     @OneToMany(mappedBy = "appUser")
     List<Post> posts;
 

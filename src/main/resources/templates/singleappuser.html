@@ -6,6 +6,8 @@
 </head>
 <body>
 
+<div th:replace="fragments/header :: header">...</div>
+
 <h1>Application User - <span th:text="${appUser.username}"></span></h1>
 
 <p>First Name: <span th:text="${appUser.firstname}"></span></p>

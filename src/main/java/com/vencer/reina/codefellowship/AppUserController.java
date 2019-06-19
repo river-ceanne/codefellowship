@@ -57,6 +57,7 @@ public class AppUserController {
     public String getMyProfilePage(Principal p, Model m) {
         AppUser appUser = appUserRepository.findByUsername(p.getName());
         m.addAttribute("appUser",appUser);
+        m.addAttribute("principal", p.getName());
         return "myprofile";
     }
 

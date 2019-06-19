@@ -6,13 +6,8 @@
 </head>
 <body>
 
-<h1>Codefellowship</h1>
+<div th:replace="fragments/header :: header">...</div>
 
-<h2>Welcome, <span th:text="${principal}"></span>!</h2>
-
-<a th:href="@{'/login'}">Log In</a>
-
-<a th:href="@{'/logout'}">Logout</a>
 
 <p>CodeFellowship allows people learning to code to connect with each other and support each other on their coding journeys.
 
