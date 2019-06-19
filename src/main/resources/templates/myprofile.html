@@ -18,5 +18,14 @@
 <p>Date of Birth: <span th:text="${appUser.dob}"></span></p>
 <p>Bio: <span th:text="${appUser.bio}"></span></p>
 
+<ul>
+    <li th:each="post : ${appUser.posts}">
+<!--        <img th:src="@{${album.imageUrl}}" th:width="300"/>-->
+        <p><span th:text="${post.createdAt}"></span></p>
+        <p><span th:text="${post.body}"></span></p>
+    </li>
+</ul>
+
+
 </body>
 </html>
