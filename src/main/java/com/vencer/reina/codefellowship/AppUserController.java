@@ -64,10 +64,12 @@ public class AppUserController {
 
 
     @GetMapping("/users/{id}")
-    public String getSingleAppUserPage(Model m, @PathVariable String id) {
+    public String getSingleAppUserPage(Model m, Principal p, @PathVariable String id) {
         long ID = Long.parseLong(id);
         AppUser appUser = appUserRepository.findById(ID);
         m.addAttribute("appUser", appUser);
+        m.addAttribute("principal", p.getName());
+
         return "singleappuser";
     }
 
@@ -86,7 +88,7 @@ public class AppUserController {
         m.addAttribute("appUser",appUser);
         m.addAttribute("principal", p.getName());
         m.addAttribute("users", users);
-        return "feed";
+        return "users";
     }
 
 

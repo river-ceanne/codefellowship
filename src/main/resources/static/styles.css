@@ -34,3 +34,15 @@ ul{
 
 list-style-type: none;
 }
+
+.follow-button-form {
+
+display: inline-block;
+
+}
+
+.user-list li {
+
+padding: 1vw;
+
+}
