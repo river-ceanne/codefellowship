@@ -10,7 +10,10 @@
         </span>
         <span th:unless="${principal == null}">
             Hello, <span th:text="${principal}"></span>!
+            <a href="/feed">Feed</a>
             <a href="/myprofile">My Profile</a>
+            <a href="/users">User Index</a>
+
             <a href="/logout">Log out</a>
         </span>
 

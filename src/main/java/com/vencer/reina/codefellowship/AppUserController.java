@@ -73,14 +73,6 @@ public class AppUserController {
         return "singleappuser";
     }
 
-    @GetMapping("/feed")
-    public String getFeedPage(Principal p, Model m) {
-        AppUser appUser = appUserRepository.findByUsername(p.getName());
-        m.addAttribute("appUser",appUser);
-        m.addAttribute("principal", p.getName());
-        return "feed";
-    }
-
     @GetMapping("/users")
     public String getUsersPage(Principal p, Model m) {
         AppUser appUser = appUserRepository.findByUsername(p.getName());
@@ -89,6 +81,30 @@ public class AppUserController {
         m.addAttribute("principal", p.getName());
         m.addAttribute("users", users);
         return "users";
+    }
+
+    @GetMapping("/following")
+    public String getFollowingPage(Principal p, Model m) {
+        AppUser appUser = appUserRepository.findByUsername(p.getName());
+        Iterable<AppUser> users = appUser.following;
+        m.addAttribute("appUser",appUser);
+        m.addAttribute("principal", p.getName());
+        m.addAttribute("users", users);
+        return "following";
+    }
+
+    @PostMapping("/follow")
+    public RedirectView followUser(Principal p, String username) throws ParseException {
+
+        AppUser loggedInUser = appUserRepository.findByUsername(p.getName());
+        AppUser userToFollow = appUserRepository.findByUsername(username);
+
+        loggedInUser.following.add(userToFollow);
+        userToFollow.followers.add(loggedInUser);
+        appUserRepository.save(loggedInUser);
+        appUserRepository.save(userToFollow);
+
+        return new RedirectView("/users");
     }
 
 
