@@ -15,7 +15,10 @@
     <li th:each="post : ${posts}">
         <span th:text="${post.createdAt}"></span>
         <span th:text="${post.body}"></span>
-        <span th:text="${post.appUser.username}"></span>
+        <a th:href="@{'/users/' + ${user.id}}">
+            <span th:text="${post.appUser.firstname}"></span>
+            <span th:text="${post.appUser.lastname}"></span>
+        </a>
     </li>
 </ul>
 
