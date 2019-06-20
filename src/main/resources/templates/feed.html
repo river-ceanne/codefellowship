@@ -11,6 +11,7 @@
 <div th:replace="fragments/header :: header">...</div>
 
 <h2>Feed</h2>
+
 <ul class="feed-list">
     <li th:each="post : ${posts}">
         <span th:text="${post.createdAt}"></span>

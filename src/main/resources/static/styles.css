@@ -46,3 +46,11 @@ display: inline-block;
 padding: 1vw;
 
 }
+
+.feed-list li {
+
+padding: 1vw;
+background-color: white;
+margin: 1vw;
+
+}
