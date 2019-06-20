@@ -93,11 +93,11 @@ public class AppUserController {
         return "following";
     }
 
-    @PostMapping("/follow")
-    public RedirectView followUser(Principal p, String username) throws ParseException {
+    @PostMapping("/follow/{id}")
+    public RedirectView followUser(Principal p, @PathVariable long id) throws ParseException {
 
         AppUser loggedInUser = appUserRepository.findByUsername(p.getName());
-        AppUser userToFollow = appUserRepository.findByUsername(username);
+        AppUser userToFollow = appUserRepository.findById(id);
 
         loggedInUser.following.add(userToFollow);
         userToFollow.followers.add(loggedInUser);
