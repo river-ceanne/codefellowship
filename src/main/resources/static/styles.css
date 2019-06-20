@@ -6,16 +6,23 @@ background-color: aliceblue;
 
 }
 
+nav {
+height: 3vw;
+}
+
 nav a {
 
 padding-right: 3vw;
 text-decoration: none;
-
-&:hover{
-background-color: white;
-}
+line-height: 3vw;
 
 }
+
+nav a:hover {
+
+    font-style: italic;
+
+    }
 
 nav {
 

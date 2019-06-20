@@ -13,9 +13,13 @@
 <h2>Users</h2>
 <ul class="user-list">
     <li th:each="user : ${users}">
-        <span th:text="${user.username}"></span>
-        <span th:text="${user.firstname}"></span>
-        <span th:text="${user.lastname}"></span>
+        <a href="'/users/' + ${user.id}"><span th:text="${user.firstname}"></span>
+            <span th:text="${user.lastname}"></span></a>
+
+        <form method="POST" action="/follow">
+            <input type="hidden" name="followUsername" id="followUsername"/>
+            <input type="submit" value="Follow"/>
+        </form>
     </li>
 </ul>
 
