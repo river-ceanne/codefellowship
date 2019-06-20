@@ -32,7 +32,7 @@ public class AppUserController {
     @Autowired
     AppUserRepository appUserRepository;
 
-    @PostMapping("/users")
+    @PostMapping("/usercreate")
     public RedirectView createUser(String username, String password, String dob, String firstname, String lastname, String bio) throws ParseException {
         String hashedpwd = bCryptPasswordEncoder.encode(password);
         Date DOB = new SimpleDateFormat("yyyy-MM-dd").parse(dob);
