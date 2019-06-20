@@ -21,6 +21,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 public class AppUserController {
@@ -75,6 +76,16 @@ public class AppUserController {
         AppUser appUser = appUserRepository.findByUsername(p.getName());
         m.addAttribute("appUser",appUser);
         m.addAttribute("principal", p.getName());
+        return "feed";
+    }
+
+    @GetMapping("/users")
+    public String getUsersPage(Principal p, Model m) {
+        AppUser appUser = appUserRepository.findByUsername(p.getName());
+        Iterable<AppUser> users = appUserRepository.findAll();
+        m.addAttribute("appUser",appUser);
+        m.addAttribute("principal", p.getName());
+        m.addAttribute("users", users);
         return "feed";
     }
 

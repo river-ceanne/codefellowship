@@ -22,7 +22,7 @@
 
 <div th:replace="fragments/post :: post">...</div>
 
-My Posts
+<p>My Posts</p>
 <ul>
     <li th:each="post : ${appUser.posts}">
         <p><span th:text="${post.createdAt}"></span></p>
