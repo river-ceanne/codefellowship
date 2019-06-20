@@ -12,10 +12,15 @@
 
 <h1>Application User - <span th:text="${appUser.username}"></span></h1>
 
+<form class="follow-button-form" method="POST" th:action="'/follow/' + ${appUser.id}" >
+    <button type="submit">Follow</button>
+</form>
+
 <p>First Name: <span th:text="${appUser.firstname}"></span></p>
 <p>Last Name: <span th:text="${appUser.lastname}"></span></p>
 <p>Date of Birth: <span th:text="${appUser.dob}"></span></p>
 <p>Bio: <span th:text="${appUser.bio}"></span></p>
+
 
 
 </body>

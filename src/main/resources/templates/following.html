@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www,thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Following</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="/styles.css" rel="stylesheet" />
+</head>
+<body>
+
+<div th:replace="fragments/header :: header">...</div>
+
+<h2>Who I'm Following</h2>
+
+<ul class="following-list">
+    <li th:each="user : ${users}">
+        <a th:href="@{'/users/' + ${user.id}}">
+            <span th:text="${user.firstname}"></span>
+            <span th:text="${user.lastname}"></span>
+        </a>
+
+    </li>
+</ul>
+
+
+</body>
+</html>

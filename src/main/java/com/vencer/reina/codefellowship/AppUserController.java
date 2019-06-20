@@ -21,6 +21,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 public class AppUserController {
@@ -31,7 +32,7 @@ public class AppUserController {
     @Autowired
     AppUserRepository appUserRepository;
 
-    @PostMapping("/users")
+    @PostMapping("/usercreate")
     public RedirectView createUser(String username, String password, String dob, String firstname, String lastname, String bio) throws ParseException {
         String hashedpwd = bCryptPasswordEncoder.encode(password);
         Date DOB = new SimpleDateFormat("yyyy-MM-dd").parse(dob);
@@ -63,11 +64,47 @@ public class AppUserController {
 
 
     @GetMapping("/users/{id}")
-    public String getSingleAppUserPage(Model m, @PathVariable String id) {
+    public String getSingleAppUserPage(Model m, Principal p, @PathVariable String id) {
         long ID = Long.parseLong(id);
         AppUser appUser = appUserRepository.findById(ID);
         m.addAttribute("appUser", appUser);
+        m.addAttribute("principal", p.getName());
+
         return "singleappuser";
+    }
+
+    @GetMapping("/users")
+    public String getUsersPage(Principal p, Model m) {
+        AppUser appUser = appUserRepository.findByUsername(p.getName());
+        Iterable<AppUser> users = appUserRepository.findAll();
+        m.addAttribute("appUser",appUser);
+        m.addAttribute("principal", p.getName());
+        m.addAttribute("users", users);
+        return "users";
+    }
+
+    @GetMapping("/following")
+    public String getFollowingPage(Principal p, Model m) {
+        AppUser appUser = appUserRepository.findByUsername(p.getName());
+        Iterable<AppUser> users = appUser.following;
+        m.addAttribute("appUser",appUser);
+        m.addAttribute("principal", p.getName());
+        m.addAttribute("users", users);
+        return "following";
+    }
+
+    @PostMapping("/follow/{id}")
+    public RedirectView followUser(Principal p, @PathVariable long id) throws ParseException {
+
+        AppUser loggedInUser = appUserRepository.findByUsername(p.getName());
+        AppUser userToFollow = appUserRepository.findById(id);
+
+        loggedInUser.following.add(userToFollow);
+        userToFollow.followers.add(loggedInUser);
+        appUserRepository.save(loggedInUser);
+        appUserRepository.save(userToFollow);
+
+        return new RedirectView("/users");
     }
 
 

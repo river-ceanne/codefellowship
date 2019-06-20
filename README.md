@@ -25,11 +25,15 @@ This repository includes some basic implementation of Spring Authorization on a 
 
 ## Routes/API
 
+#### CodefellowshipController
+
 - @GetMapping("/")
       
       public String getCodefellowship(Principal p, Model m)
+      
+#### AppUserController
 
-- @PostMapping("/users")
+- @PostMapping("/usercreate")
      
        public RedirectView createUser(String username, String password, String dob, String firstname, String lastname, String bio)
 
@@ -48,7 +52,20 @@ This repository includes some basic implementation of Spring Authorization on a 
 - @GetMapping("/users/{id}")
       
       public String getSingleAppUserPage(Model m, @PathVariable String id) 
+
+- @GetMapping("/users")
+
+      public String getUsersPage(Principal p, Model m)
+
+-  @GetMapping("/following")
+
+        public String getFollowingPage(Principal p, Model m) 
+        
+- @PostMapping("/follow/{id}")
+
+      public RedirectView followUser(Principal p, @PathVariable long id)
       
+#### PostController      
 - @PostMapping("/posts")
      
       public RedirectView createPost(Principal p, Model m, String body)
@@ -56,3 +73,7 @@ This repository includes some basic implementation of Spring Authorization on a 
 - @GetMapping("/post")
       
       public String getPostPage() 
+      
+- @GetMapping("/feed")
+
+      public String getFeedPage(Principal p, Model m)
