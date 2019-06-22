@@ -77,9 +77,12 @@ public class AppUserController {
     public String getUsersPage(Principal p, Model m) {
         AppUser appUser = appUserRepository.findByUsername(p.getName());
         Iterable<AppUser> users = appUserRepository.findAll();
+        List<AppUser> usersWithoutPrincipal = new ArrayList<>();
+        users.forEach(usersWithoutPrincipal::add);
+        usersWithoutPrincipal.remove(appUser);
         m.addAttribute("appUser",appUser);
         m.addAttribute("principal", p.getName());
-        m.addAttribute("users", users);
+        m.addAttribute("users", usersWithoutPrincipal);
         return "users";
     }
 
