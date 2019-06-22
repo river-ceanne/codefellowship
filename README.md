@@ -8,6 +8,10 @@ This repository includes some basic implementation of Spring Authorization on a 
 3. Run the command: 
     
         ./gradlew bootrun
+        
+#### Deployed version
+    
+    http://codefellowship-env.iejaunm2ph.us-east-2.elasticbeanstalk.com/
 
 ## Classes
 - AppUser
