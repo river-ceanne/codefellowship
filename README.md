@@ -5,7 +5,16 @@ This repository includes some basic implementation of Spring Authorization on a 
 ## Starter Guide:
 1. To run the server application, clone down this repo.
 2. 'cd' into the cloned repository in your terminal
-3. Run the command: 
+3. Make sure you have modified the applicaton.properties file with your own environment variables: 
+
+        spring.datasource.url=${DATABASE_URL}
+        spring.datasource.username=${DATABASE_USERNAME}
+        spring.datasource.password=${DATABASE_PASSWORD}
+        spring.jpa.hibernate.ddl-auto=update
+        spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
+        server.port=5000
+        
+4. Run the command: 
     
         ./gradlew bootrun
         
